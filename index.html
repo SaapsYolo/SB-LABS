@@ -8,61 +8,58 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #080808;
-    --white: #f5f0e8;
-    --cream: #ede8da;
-    --acid: #c8f53a;
+    --black: #0f0f0e;
+    --white: #faf8f4;
+    --cream: #f0ece0;
+    --acid: #8fc400;
     --orange: #ff5c28;
-    --muted: #6b6760;
-    --card-bg: #111110;
-    --border: rgba(245,240,232,0.1);
+    --muted: #8a8680;
+    --card-bg: #f0ece0;
+    --border: rgba(15,15,14,0.1);
+    --text: #1a1916;
+    --text-soft: rgba(26,25,22,0.55);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--black);
-    color: var(--white);
+    background: var(--white);
+    color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
     cursor: none;
   }
 
-  /* Custom cursor */
   .cursor {
     position: fixed;
     width: 12px; height: 12px;
-    background: var(--acid);
+    background: var(--black);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    mix-blend-mode: difference;
   }
   .cursor-ring {
     position: fixed;
     width: 40px; height: 40px;
-    border: 1px solid var(--acid);
+    border: 1px solid var(--black);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
     transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
-    opacity: 0.5;
+    opacity: 0.25;
   }
-  body:hover .cursor { opacity: 1; }
 
-  /* Noise overlay */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.025;
+    opacity: 0.03;
     pointer-events: none;
     z-index: 1000;
   }
@@ -76,22 +73,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 24px 60px;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(250,248,244,0.97) 0%, transparent 100%);
+    backdrop-filter: blur(4px);
   }
-
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
     letter-spacing: 4px;
-    color: var(--white);
+    color: var(--text);
   }
-  .nav-logo span { color: var(--acid); }
-
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -101,22 +93,21 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--acid); }
-
+  .nav-links a:hover { color: var(--black); }
   .nav-cta {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    background: var(--acid);
-    color: var(--black);
+    background: var(--black);
+    color: var(--white);
     border: none;
     padding: 12px 28px;
     cursor: none;
     font-weight: 700;
     transition: background 0.2s, transform 0.1s;
   }
-  .nav-cta:hover { background: var(--white); transform: translateY(-1px); }
+  .nav-cta:hover { background: var(--orange); transform: translateY(-1px); }
 
   /* HERO */
   .hero {
@@ -127,31 +118,27 @@
     padding: 0 60px 80px;
     position: relative;
     overflow: hidden;
+    background: var(--white);
   }
-
   .hero-bg {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,245,58,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(143,196,0,0.09) 0%, transparent 70%),
       radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,92,40,0.07) 0%, transparent 60%);
   }
-
   .hero-grid {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(245,240,232,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,240,232,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(15,15,14,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,15,14,0.05) 1px, transparent 1px);
     background-size: 80px 80px;
   }
-
   .hero-tag {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--acid);
+    color: var(--orange);
     margin-bottom: 32px;
     display: flex;
     align-items: center;
@@ -160,11 +147,9 @@
   .hero-tag::before {
     content: '';
     display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--acid);
+    width: 40px; height: 1px;
+    background: var(--orange);
   }
-
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(80px, 14vw, 200px);
@@ -172,43 +157,39 @@
     letter-spacing: -2px;
     margin-bottom: 48px;
     position: relative;
+    color: var(--text);
   }
-
-  .hero-title .line-accent { color: var(--acid); }
+  .hero-title .line-accent { color: var(--orange); }
   .hero-title .line-outline {
-    -webkit-text-stroke: 1px rgba(245,240,232,0.3);
+    -webkit-text-stroke: 1.5px rgba(15,15,14,0.2);
     color: transparent;
   }
-
   .hero-bottom {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 40px;
   }
-
   .hero-desc {
     max-width: 420px;
     font-size: 16px;
     line-height: 1.75;
-    color: rgba(245,240,232,0.6);
+    color: var(--text-soft);
   }
-
   .hero-actions {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 16px;
   }
-
   .btn-primary {
     font-family: 'Space Mono', monospace;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 700;
-    background: var(--acid);
-    color: var(--black);
+    background: var(--black);
+    color: var(--white);
     border: none;
     padding: 20px 48px;
     cursor: none;
@@ -216,8 +197,7 @@
     text-decoration: none;
     display: inline-block;
   }
-  .btn-primary:hover { background: var(--white); transform: translateY(-2px); }
-
+  .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
   .btn-secondary {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -225,11 +205,11 @@
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(15,15,14,0.2);
     padding-bottom: 2px;
     transition: color 0.2s, border-color 0.2s;
   }
-  .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+  .btn-secondary:hover { color: var(--black); border-color: var(--black); }
 
   /* MARQUEE */
   .marquee-wrap {
@@ -237,11 +217,10 @@
     border-bottom: 1px solid var(--border);
     padding: 20px 0;
     overflow: hidden;
-    background: rgba(200,245,58,0.03);
+    background: var(--cream);
   }
   .marquee-track {
     display: flex;
-    gap: 0;
     animation: marquee 18s linear infinite;
     white-space: nowrap;
   }
@@ -249,21 +228,18 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
     letter-spacing: 6px;
-    color: var(--muted);
+    color: rgba(15,15,14,0.35);
     padding: 0 48px;
     flex-shrink: 0;
   }
-  .marquee-item span { color: var(--acid); }
+  .marquee-item span { color: var(--orange); }
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
 
   /* SERVICES */
-  .services {
-    padding: 140px 60px;
-  }
-
+  .services { padding: 140px 60px; background: var(--white); }
   .section-header {
     display: flex;
     justify-content: space-between;
@@ -271,60 +247,54 @@
     margin-bottom: 80px;
     gap: 60px;
   }
-
   .section-label {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--acid);
+    color: var(--orange);
     margin-bottom: 20px;
   }
-
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(48px, 7vw, 96px);
     line-height: 0.9;
     letter-spacing: 1px;
+    color: var(--text);
   }
-
   .section-desc {
     max-width: 360px;
     font-size: 15px;
     line-height: 1.8;
-    color: rgba(245,240,232,0.55);
+    color: var(--text-soft);
     padding-top: 12px;
     align-self: flex-end;
   }
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
   }
-
   .service-card {
-    background: var(--card-bg);
+    background: var(--cream);
     padding: 56px 48px;
     position: relative;
     overflow: hidden;
     transition: background 0.3s;
     border: 1px solid var(--border);
   }
-
   .service-card::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0;
-    width: 0; height: 2px;
+    width: 0; height: 3px;
     transition: width 0.4s ease;
   }
   .service-card:nth-child(1)::after { background: var(--acid); }
   .service-card:nth-child(2)::after { background: var(--orange); }
-  .service-card:nth-child(3)::after { background: var(--white); }
+  .service-card:nth-child(3)::after { background: var(--black); }
   .service-card:hover::after { width: 100%; }
-  .service-card:hover { background: #18181600; }
-
+  .service-card:hover { background: #e6e1d2; }
   .service-number {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -332,37 +302,24 @@
     color: var(--muted);
     margin-bottom: 48px;
   }
-
-  .service-icon {
-    font-size: 40px;
-    margin-bottom: 32px;
-    display: block;
-    line-height: 1;
-  }
-
+  .service-icon { font-size: 40px; margin-bottom: 32px; display: block; line-height: 1; }
   .service-name {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 42px;
     letter-spacing: 2px;
     margin-bottom: 20px;
     line-height: 1;
+    color: var(--text);
   }
-  .service-card:nth-child(1) .service-name { color: var(--acid); }
+  .service-card:nth-child(1) .service-name { color: #5a8000; }
   .service-card:nth-child(2) .service-name { color: var(--orange); }
-
   .service-desc {
     font-size: 14px;
     line-height: 1.8;
-    color: rgba(245,240,232,0.5);
+    color: var(--text-soft);
     margin-bottom: 40px;
   }
-
-  .service-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .service-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .service-features li {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -371,132 +328,75 @@
     padding-left: 16px;
     position: relative;
   }
-  .service-features li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--acid);
-  }
+  .service-features li::before { content: '→'; position: absolute; left: 0; color: var(--acid); }
   .service-card:nth-child(2) .service-features li::before { color: var(--orange); }
+  .service-card:nth-child(3) .service-features li::before { color: var(--black); }
 
-  /* HOW IT WORKS */
-  .process {
-    padding: 140px 60px;
-    border-top: 1px solid var(--border);
-  }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 80px;
-  }
-
-  .step {
-    padding: 48px 40px;
-    border-left: 1px solid var(--border);
-    position: relative;
-  }
+  /* PROCESS */
+  .process { padding: 140px 60px; border-top: 1px solid var(--border); background: var(--white); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 80px; }
+  .step { padding: 48px 40px; border-left: 1px solid var(--border); }
   .step:last-child { border-right: 1px solid var(--border); }
-
   .step-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 80px;
-    color: rgba(245,240,232,0.05);
+    color: rgba(15,15,14,0.06);
     line-height: 1;
     margin-bottom: 24px;
   }
-
   .step-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
     letter-spacing: 2px;
     margin-bottom: 16px;
-    color: var(--white);
+    color: var(--text);
   }
-
-  .step-desc {
-    font-size: 13px;
-    line-height: 1.8;
-    color: rgba(245,240,232,0.45);
-  }
+  .step-desc { font-size: 13px; line-height: 1.8; color: var(--text-soft); }
 
   /* STATS */
   .stats {
     padding: 100px 60px;
-    background: var(--acid);
+    background: var(--black);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
   }
-
-  .stat {
-    padding: 40px 48px;
-    border-left: 1px solid rgba(8,8,8,0.15);
-  }
+  .stat { padding: 40px 48px; border-left: 1px solid rgba(250,248,244,0.08); }
   .stat:first-child { border-left: none; }
-
   .stat-number {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 72px;
-    color: var(--black);
+    color: var(--white);
     line-height: 1;
     margin-bottom: 8px;
   }
-
   .stat-label {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(8,8,8,0.6);
+    color: rgba(250,248,244,0.35);
   }
 
   /* TESTIMONIALS */
-  .testimonials {
-    padding: 140px 60px;
-    border-top: 1px solid var(--border);
-  }
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin-top: 80px;
-  }
-
+  .testimonials { padding: 140px 60px; border-top: 1px solid var(--border); background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 80px; }
   .testimonial {
-    background: var(--card-bg);
+    background: var(--cream);
     border: 1px solid var(--border);
     padding: 56px 48px;
-    position: relative;
   }
-
   .testimonial-quote {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 80px;
-    color: var(--acid);
+    color: var(--orange);
     line-height: 0.6;
     margin-bottom: 32px;
-    opacity: 0.4;
+    opacity: 0.25;
   }
-
-  .testimonial-text {
-    font-size: 17px;
-    line-height: 1.75;
-    color: rgba(245,240,232,0.75);
-    margin-bottom: 40px;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
+  .testimonial-text { font-size: 17px; line-height: 1.75; color: rgba(26,25,22,0.72); margin-bottom: 40px; }
+  .testimonial-author { display: flex; align-items: center; gap: 16px; }
   .author-avatar {
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--acid), var(--orange));
     display: flex;
@@ -504,23 +404,10 @@
     justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 18px;
-    color: var(--black);
-  }
-
-  .author-name {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
     color: var(--white);
-    margin-bottom: 4px;
   }
-
-  .author-role {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: var(--muted);
-  }
+  .author-name { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1px; color: var(--text); margin-bottom: 4px; }
+  .author-role { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--muted); }
 
   /* CTA */
   .cta-section {
@@ -529,39 +416,23 @@
     position: relative;
     overflow: hidden;
     border-top: 1px solid var(--border);
+    background: var(--cream);
   }
-
   .cta-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(200,245,58,0.07) 0%, transparent 70%);
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(143,196,0,0.1) 0%, transparent 70%);
   }
-
   .cta-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(60px, 10vw, 140px);
     line-height: 0.9;
     margin-bottom: 40px;
     position: relative;
+    color: var(--text);
   }
-
-  .cta-title .accent { color: var(--acid); }
-
-  .cta-sub {
-    font-size: 16px;
-    color: rgba(245,240,232,0.5);
-    max-width: 480px;
-    margin: 0 auto 56px;
-    line-height: 1.8;
-    position: relative;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    position: relative;
-  }
+  .cta-title .accent { color: var(--orange); }
+  .cta-sub { font-size: 16px; color: var(--text-soft); max-width: 480px; margin: 0 auto 56px; line-height: 1.8; position: relative; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; position: relative; }
 
   /* FOOTER */
   footer {
@@ -570,20 +441,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--white);
   }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    letter-spacing: 4px;
-  }
-  .footer-logo span { color: var(--acid); }
-
-  .footer-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 4px; color: var(--text); }
+  .footer-logo span { color: var(--orange); }
+  .footer-links { display: flex; gap: 32px; list-style: none; }
   .footer-links a {
     font-family: 'Space Mono', monospace;
     font-size: 10px;
@@ -593,27 +455,13 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .footer-links a:hover { color: var(--acid); }
-
-  .footer-copy {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: rgba(107,103,96,0.5);
-  }
+  .footer-links a:hover { color: var(--black); }
+  .footer-copy { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; color: rgba(138,134,128,0.5); }
 
   /* ANIMATIONS */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
@@ -633,7 +481,6 @@
 </head>
 <body>
 
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -653,15 +500,12 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-
-  <div class="hero-tag">Available for projects · 2025</div>
-
+  <div class="hero-tag">Available for projects · 2026</div>
   <h1 class="hero-title">
     <div>BUILD</div>
     <div class="line-accent">GROW.</div>
     <div class="line-outline">AUTOMATE.</div>
   </h1>
-
   <div class="hero-bottom">
     <p class="hero-desc">
       I craft high-performance software, data-driven marketing strategies, and intelligent AI automation systems — engineered for businesses ready to scale without limits.
@@ -700,9 +544,7 @@
     </div>
     <p class="section-desc">Every service is built around one goal: measurable, compounding results that give you an unfair advantage in your market.</p>
   </div>
-
   <div class="services-grid">
-    <!-- Software Dev -->
     <div class="service-card reveal">
       <div class="service-number">01 / 03</div>
       <span class="service-icon">⌨</span>
@@ -716,8 +558,6 @@
         <li>DevOps & Cloud Deployment</li>
       </ul>
     </div>
-
-    <!-- Marketing -->
     <div class="service-card reveal">
       <div class="service-number">02 / 03</div>
       <span class="service-icon">◈</span>
@@ -731,8 +571,6 @@
         <li>Analytics & Attribution</li>
       </ul>
     </div>
-
-    <!-- AI Automation -->
     <div class="service-card reveal">
       <div class="service-number">03 / 03</div>
       <span class="service-icon">◎</span>
@@ -778,7 +616,6 @@
     </div>
     <p class="section-desc">A tight four-step framework designed to move fast, eliminate uncertainty, and ship results you can measure.</p>
   </div>
-
   <div class="process-steps">
     <div class="step reveal">
       <div class="step-num">01</div>
@@ -812,7 +649,6 @@
     </div>
     <p class="section-desc">Real results from real businesses who chose to stop guessing and start growing.</p>
   </div>
-
   <div class="testimonials-grid">
     <div class="testimonial reveal">
       <div class="testimonial-quote">"</div>
@@ -825,7 +661,6 @@
         </div>
       </div>
     </div>
-
     <div class="testimonial reveal">
       <div class="testimonial-quote">"</div>
       <p class="testimonial-text">Our ad spend ROI went from 1.4x to 4.2x in three months. Their marketing strategy didn't just increase traffic — it brought the right people who actually bought.</p>
@@ -849,7 +684,7 @@
   <p class="cta-sub reveal">Book a free 30-minute strategy session. No fluff, no pitch — just a clear plan for what's possible.</p>
   <div class="cta-buttons reveal">
     <a href="mailto:siya.biyo.bongi@gmail.com" class="btn-primary">Book Free Strategy Call</a>
-    <a href="mailto:siya.biyo.bongi@gmail.com" class="btn-secondary">Send us a message</a>
+    <a href="mailto:siya.biyo.bongi@gmail.com" class="btn-secondary">Send a message</a>
   </div>
 </section>
 
@@ -865,7 +700,6 @@
 </footer>
 
 <script>
-  // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -890,14 +724,13 @@
     });
     el.addEventListener('mouseleave', () => {
       cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      cursor.style.background = 'var(--acid)';
+      cursor.style.background = 'var(--black)';
     });
   });
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         setTimeout(() => entry.target.classList.add('visible'), 80);
       }
@@ -905,7 +738,6 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  // Stagger sibling reveals
   document.querySelectorAll('.services-grid, .process-steps, .stats, .testimonials-grid').forEach(grid => {
     grid.querySelectorAll('.reveal').forEach((el, i) => {
       el.style.transitionDelay = (i * 0.12) + 's';
